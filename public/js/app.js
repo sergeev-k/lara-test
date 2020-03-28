@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"home":"home","login":"login","register":"register"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -60887,27 +60887,35 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./home": [
 		"./resources/js/pages/home.vue",
-		"home"
+		0
 	],
 	"./home.vue": [
 		"./resources/js/pages/home.vue",
-		"home"
+		0
 	],
 	"./login": [
 		"./resources/js/pages/login.vue",
-		"login"
+		1
 	],
 	"./login.vue": [
 		"./resources/js/pages/login.vue",
-		"login"
+		1
+	],
+	"./notFound": [
+		"./resources/js/pages/notFound.vue",
+		2
+	],
+	"./notFound.vue": [
+		"./resources/js/pages/notFound.vue",
+		2
 	],
 	"./register": [
 		"./resources/js/pages/register.vue",
-		"register"
+		3
 	],
 	"./register.vue": [
 		"./resources/js/pages/register.vue",
-		"register"
+		3
 	]
 };
 function webpackAsyncContext(req) {
@@ -60968,6 +60976,9 @@ var loadPage = function loadPage(page) {
     path: '/sign_in',
     name: 'login',
     component: loadPage('login')
+  }, {
+    path: '*',
+    component: loadPage('notFound')
   }]
 }));
 

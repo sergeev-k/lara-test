@@ -23,6 +23,10 @@ export default new VueRouter({
             name: 'login',
             component: loadPage('login')
         },
+        {
+            path :'*',
+            component: loadPage('notFound')
+        }
     ]
 });
 

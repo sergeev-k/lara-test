@@ -1,5 +1,11 @@
 <template>
-    <h2>Home</h2>
+    <div>
+        <b-list-group>
+            <b-list-group-item>
+                {{ }}
+            </b-list-group-item>
+        </b-list-group>
+    </div>
 </template>
 
 <script>
