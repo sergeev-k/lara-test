@@ -60887,11 +60887,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./home": [
 		"./resources/js/pages/home.vue",
-		0
+		0,
+		4
 	],
 	"./home.vue": [
 		"./resources/js/pages/home.vue",
-		0
+		0,
+		4
 	],
 	"./login": [
 		"./resources/js/pages/login.vue",
@@ -60928,7 +60930,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		return __webpack_require__(id);
 	});
 }

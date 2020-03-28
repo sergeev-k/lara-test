@@ -14,10 +14,18 @@ class UsersSeeder extends Seeder
     public function run()
     {
 
+        // Todo : Нету в нем необходимости
         DB::table('users')->insert([
-            'name' => 'User',
-            'email' => Str::random(10).'@gmail.com',
-            'password' => bcrypt('password'),
+            [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => '1234',
+            ],
+            [
+                'name' => 'User',
+                'email' => 'user@gmail.com',
+                'password' => '1234',
+            ],
         ]);
     }
 }
