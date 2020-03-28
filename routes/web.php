@@ -10,6 +10,11 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('/projects', 'ProjectController@index');
+    Route::get('/users', 'UserController@index');
+
+    Route::get('invite', 'InviteController@invite')->name('invite');
+    Route::post('invite', 'InviteController@process')->name('process');
+    Route::get('accept/{token}', 'InviteController@accept')->name('accept');
 });
 
 

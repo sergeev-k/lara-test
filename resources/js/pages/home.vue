@@ -16,17 +16,27 @@
         name: "home",
         data() {
             return {
-                projects: []
+                projects: [],
+                users: [],
             }
         },
         mounted() {
             this.getProjects();
+            this.getUsers()
         },
         methods:{
             async getProjects() {
                 try{
                     const projects = await this.$axios.get('/projects');
                     this.projects = projects.data.data;
+                }catch(e){
+                    this.errorMessage(e);
+                }
+            },
+            async getUsers() {
+                try{
+                    const users = await this.$axios.get('/users');
+                    this.users = users.data.data;
                 }catch(e){
                     this.errorMessage(e);
                 }

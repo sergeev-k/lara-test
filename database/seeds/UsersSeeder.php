@@ -17,8 +17,8 @@ class UsersSeeder extends Seeder
         // Todo : Нету в нем необходимости
         DB::table('users')->insert([
             [
-                'name' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'name' => 'Owner',
+                'email' => 'owner@gmail.com',
                 'password' => '1234',
             ],
             [
