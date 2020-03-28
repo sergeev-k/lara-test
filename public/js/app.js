@@ -60895,6 +60895,16 @@ var map = {
 		0,
 		4
 	],
+	"./invite": [
+		"./resources/js/pages/invite.vue",
+		0,
+		6
+	],
+	"./invite.vue": [
+		"./resources/js/pages/invite.vue",
+		0,
+		6
+	],
 	"./login": [
 		"./resources/js/pages/login.vue",
 		1
@@ -60970,6 +60980,10 @@ var loadPage = function loadPage(page) {
     path: '/',
     name: 'home',
     component: loadPage('home')
+  }, {
+    path: '/invite',
+    name: 'invite',
+    component: loadPage('invite')
   }, {
     path: '/sign_up',
     name: 'register',

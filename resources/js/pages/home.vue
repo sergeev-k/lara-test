@@ -3,7 +3,17 @@
         <b-list-group v-if="projects.length">
             <b-list-group-item v-for="(project, i) in projects" :key="i" class="d-flex justify-content-between align-items-center">
                 {{ project.name }}
-                <b-button variant="primary" @click="subscribe(project.id)" size="sm">Subscribe</b-button>
+                <b-form-select
+                    id="users"
+                    v-model="selectedUser[i]"
+                    @change="subscribe(project.id, i)"
+                    size="sm"
+                    style="width:200px">
+                    <option :value="null" selected disabled>Select User</option>
+                    <template v-for="user of users">
+                        <option :value="user.id">{{ user.name }}</option>
+                    </template>
+                </b-form-select>
             </b-list-group-item>
         </b-list-group>
 
@@ -18,6 +28,7 @@
             return {
                 projects: [],
                 users: [],
+                selectedUser: []
             }
         },
         mounted() {
@@ -41,7 +52,7 @@
                     this.errorMessage(e);
                 }
             },
-            subscribe(id){
+            subscribe(id, index){
 
             },
             errorMessage(message){

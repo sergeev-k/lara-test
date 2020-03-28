@@ -14,6 +14,11 @@ export default new VueRouter({
             component: loadPage('home')
         },
         {
+            path: '/invite',
+            name: 'invite',
+            component: loadPage('invite')
+        },
+        {
             path: '/sign_up',
             name: 'register',
             component: loadPage('register')
