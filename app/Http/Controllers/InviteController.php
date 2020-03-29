@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invite;
 use App\Mail\InviteCreated;
+use App\Project;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;

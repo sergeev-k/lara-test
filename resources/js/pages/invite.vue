@@ -23,6 +23,7 @@
 <script>
     export default {
         name: "invite",
+        props: ['id'],
         data() {
             return {
                 email: '',

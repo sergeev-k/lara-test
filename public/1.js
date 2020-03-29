@@ -141,9 +141,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     getInvite: function getInvite() {
-      this.$router.push({
-        name: 'invite'
+      var id = [];
+      this.selectProject.forEach(function (k, v) {
+        if (k) id.push(v);
       });
+
+      if (this.selectedUser && id.length) {
+        this.$router.push({
+          name: 'invite',
+          query: {
+            id: id.join(',')
+          }
+        });
+      }
     },
     errorMessage: function errorMessage(message) {
       // Todo: временно

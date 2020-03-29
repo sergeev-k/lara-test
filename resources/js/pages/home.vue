@@ -70,8 +70,14 @@
                 }
             },
             getInvite() {
+                const id = [];
+                this.selectProject.forEach((k,v)=>{
+                    if(k) id.push(v);
+                });
+                if(this.selectedUser && id.length) {
+                    this.$router.push({ name: 'invite', query: {id: id.join(',')}});
+                }
 
-                this.$router.push({ name: 'invite'});
             },
             errorMessage(message) {
                 // Todo: временно

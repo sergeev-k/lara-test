@@ -17,7 +17,8 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        $project = Project::findOrFail($id);
+        error_log(json_encode(Project::with('users')));
+        $project = Project::findOrFail($id)->where('id', Auth::id());
         return response()->json(['data' => $project], 200);
 
     }
