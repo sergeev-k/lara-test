@@ -14,6 +14,11 @@ export default new VueRouter({
             component: loadPage('home')
         },
         {
+            path: '/project/:id',
+            name: 'projectShow',
+            component: loadPage('projectShow')
+        },
+        {
             path: '/invite',
             name: 'invite',
             component: loadPage('invite')

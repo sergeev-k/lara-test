@@ -13,12 +13,14 @@ class ProjectsSeeder extends Seeder
      */
     public function run()
     {
-        $projects = [];
+        $faker = Faker\Factory::create();
 
+        $projects = [];
         for ($x = 0; $x <= 5; $x++) {
             $projects[] = [
-                'name' => 'Project '.$x,
-                'desc' => Str::random('50'),
+                'name' => $faker->jobTitle,
+                'desc' => $faker->text(30),
+                'user_id' => rand(1,2),
             ];
         }
 

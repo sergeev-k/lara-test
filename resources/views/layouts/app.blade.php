@@ -55,9 +55,9 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <div>
-                                <img src="{{ Storage::url('images/'.Auth::user()->avatar) }}" width="40" alt="Avatar">
-                            </div>
+{{--                            <div>--}}
+{{--                                <img src="{{ Storage::url('images/'.Auth::user()->avatar) }}" width="40" alt="Avatar">--}}
+{{--                            </div>--}}
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 

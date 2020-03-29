@@ -32,7 +32,9 @@
             async onSubmit() {
                 try{
                     const response = await this.$axios.post('/invite', {email: this.email});
-                    // Todo: add alert for user
+                    if(response.status === 200) {
+                        this.$router.push({ name: 'home' })
+                    }
                 }catch(e){
                     console.log(e.message);
                 }

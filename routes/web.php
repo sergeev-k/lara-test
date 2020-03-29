@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/projects', 'ProjectController@index');
     Route::get('/users', 'UserController@index');
 
     Route::post('/invite', 'InviteController@process')->name('process');

@@ -15,6 +15,7 @@ Vue.prototype.$axios.create({
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         'X-CSRF-TOKEN' : document.head.querySelector('meta[name="csrf-token"]').content,
+        withCredentials: true,
     },
 });
 

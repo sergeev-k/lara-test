@@ -23,17 +23,16 @@ class InviteController extends Controller
             return response()->json(['data' => 'Email no validate']);
         }
         do {
-            $token = Str::random('12');
+            $token = Str::random(16);
         } while (Invite::where('token', $token)->first());
 
         $invite = Invite::create([
             'email' => $request->get('email'),
             'token' => $token
         ]);
-
         Mail::to($request->get('email'))->send(new InviteCreated($invite));
 
-        return redirect()->to('/');
+        return response()->json(['data' => 'Success'], 200);
     }
 
     public function accept($token)
@@ -42,10 +41,6 @@ class InviteController extends Controller
             abort(404);
         }
 
-        User::create(['email' => $invite->email]);
-
-        $invite->delete();
-
-        return response()->json(['data' => 'Success'], 201);
+        return redirect()->to('/');
     }
 }
