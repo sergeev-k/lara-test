@@ -37,37 +37,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "home",
   data: function data() {
     return {
-      projects: [],
-      users: [],
-      selectedUser: null,
-      selectProject: [],
-      selectedProject: []
+      projects: []
     };
   },
   mounted: function mounted() {
     this.getProjects();
-    this.getUsers();
   },
   methods: {
     getProjects: function getProjects() {
@@ -107,54 +85,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 9]]);
       }))();
     },
-    getUsers: function getUsers() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var users;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return _this2.$axios.get('/users');
-
-              case 3:
-                users = _context2.sent;
-                _this2.users = users.data.data;
-                _context2.next = 10;
-                break;
-
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
-
-                _this2.errorMessage(_context2.t0);
-
-              case 10:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, null, [[0, 7]]);
-      }))();
-    },
-    getInvite: function getInvite() {
-      var id = [];
-      this.selectProject.forEach(function (k, v) {
-        if (k) id.push(v);
-      });
-
-      if (this.selectedUser && id.length) {
-        this.$router.push({
-          name: 'invite',
-          query: {
-            id: id.join(',')
-          }
-        });
-      }
-    },
     errorMessage: function errorMessage(message) {
       // Todo: временно
       console.log(message);
@@ -182,134 +112,59 @@ var render = function() {
   return _c(
     "b-row",
     [
-      _vm.projects.length
-        ? _c(
-            "b-form",
+      _c(
+        "b-list-group",
+        { staticClass: "w-100" },
+        _vm._l(_vm.projects, function(project, i) {
+          return _c(
+            "b-list-group-item",
             {
-              staticClass: "w-100",
-              attrs: { inline: "" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.getInvite($event)
-                }
-              }
+              key: i,
+              staticClass:
+                "d-flex justify-content-between align-items-center w-100"
             },
             [
+              _vm._v("\n            " + _vm._s(i + 1) + ".\n            "),
               _c(
-                "b-list-group",
-                { staticClass: "w-100" },
-                _vm._l(_vm.projects, function(project, i) {
-                  return _c(
-                    "b-list-group-item",
-                    {
-                      key: i,
-                      staticClass:
-                        "d-flex justify-content-between align-items-center w-100"
-                    },
-                    [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(i + 1) +
-                          ".\n                "
-                      ),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "flex-grow-1 ml-2",
-                          attrs: { to: { path: "project/" + project.id } }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(project.name) +
-                              "\n                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        model: {
-                          value: _vm.selectProject[project.id],
-                          callback: function($$v) {
-                            _vm.$set(_vm.selectProject, project.id, $$v)
-                          },
-                          expression: "selectProject[project.id]"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                }),
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "d-flex w-100 mt-3" },
+                "router-link",
+                {
+                  staticClass: "flex-grow-1 ml-2",
+                  attrs: { to: { path: "project/" + project.id } }
+                },
                 [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "mr-3 flex-shrink-0",
-                      attrs: { for: "users" }
-                    },
-                    [_vm._v("Select User :")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-form-select",
-                    {
-                      staticClass: "w-100",
-                      attrs: { id: "users", size: "sm" },
-                      model: {
-                        value: _vm.selectedUser,
-                        callback: function($$v) {
-                          _vm.selectedUser = $$v
-                        },
-                        expression: "selectedUser"
-                      }
-                    },
-                    [
-                      _c(
-                        "option",
-                        {
-                          attrs: { selected: "", disabled: "" },
-                          domProps: { value: null }
-                        },
-                        [_vm._v("Select User")]
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.users, function(user) {
-                        return [
-                          _c("option", { domProps: { value: user.id } }, [
-                            _vm._v(_vm._s(user.name))
-                          ])
-                        ]
-                      })
-                    ],
-                    2
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(project.name) +
+                      "\n            "
                   )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "w-100 mt-3" },
-                [
-                  _c(
-                    "b-button",
-                    { attrs: { variant: "primary", type: "submit" } },
-                    [_vm._v("Send Invite")]
-                  )
-                ],
-                1
+                ]
               )
             ],
             1
           )
-        : _vm._e()
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "w-100 mt-3" },
+        [
+          _c(
+            "b-button",
+            {
+              attrs: { variant: "primary", type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.$router.push({ name: "invite" })
+                }
+              }
+            },
+            [_vm._v("Send Invite User")]
+          )
+        ],
+        1
+      )
     ],
     1
   )

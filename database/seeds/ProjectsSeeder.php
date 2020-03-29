@@ -19,11 +19,18 @@ class ProjectsSeeder extends Seeder
         for ($x = 0; $x <= 5; $x++) {
             $projects[] = [
                 'name' => $faker->jobTitle,
-                'desc' => $faker->text(30),
-                'user_id' => rand(1,2),
+                'desc' => $faker->text(30)
             ];
         }
 
+
         DB::table('projects')->insert($projects);
+
+        for ($x = 0; $x <= 5; $x++) {
+            DB::table('project_user')->insert([
+                'user_id' => rand(1, 2),
+                'project_id' => \App\Project::all()->random()->id,
+            ]);
+        }
     }
 }

@@ -6,6 +6,7 @@ use App\Invite;
 use App\Mail\InviteCreated;
 use App\Project;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -18,6 +19,7 @@ class InviteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
+            'project_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -29,7 +31,8 @@ class InviteController extends Controller
 
         $invite = Invite::create([
             'email' => $request->get('email'),
-            'token' => $token
+            'token' => $token,
+            'project_id' => $request->get('project_id')
         ]);
         Mail::to($request->get('email'))->send(new InviteCreated($invite));
 
@@ -38,10 +41,13 @@ class InviteController extends Controller
 
     public function accept($token)
     {
-        if (!$invite = Invite::where('token', $token)->first()) {
+        $invite = Invite::where('token', $token)->first();
+        if (!$invite) {
             abort(404);
         }
 
-        return redirect()->to('/');
+//        $invite->delete();
+
+        return redirect()->to('/sign_up');
     }
 }

@@ -39,13 +39,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "invite",
   props: ['id'],
   data: function data() {
     return {
-      email: ''
+      email: '',
+      project: null,
+      projects: []
     };
+  },
+  mounted: function mounted() {
+    this.getProjects();
   },
   methods: {
     onSubmit: function onSubmit() {
@@ -60,7 +76,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 0;
                 _context.next = 3;
                 return _this.$axios.post('/invite', {
-                  email: _this.email
+                  email: _this.email,
+                  project_id: _this.project
                 });
 
               case 3:
@@ -87,6 +104,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, null, [[0, 7]]);
       }))();
+    },
+    getProjects: function getProjects() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var projects;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _this2.$axios.get('/sanctum/csrf-cookie');
+
+              case 3:
+                _context2.next = 5;
+                return _this2.$axios.get('api/v1/projects');
+
+              case 5:
+                projects = _context2.sent;
+                _this2.projects = projects.data.data;
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+                _this2.errorMessage(_context2.t0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    },
+    errorMessage: function errorMessage(message) {
+      // Todo: временно
+      console.log(message);
     }
   }
 });
@@ -122,6 +180,40 @@ var render = function() {
           }
         },
         [
+          _c(
+            "b-form-select",
+            {
+              staticClass: "w-100 mb-3",
+              attrs: { id: "users", size: "sm" },
+              model: {
+                value: _vm.project,
+                callback: function($$v) {
+                  _vm.project = $$v
+                },
+                expression: "project"
+              }
+            },
+            [
+              _c(
+                "option",
+                {
+                  attrs: { selected: "", disabled: "" },
+                  domProps: { value: null }
+                },
+                [_vm._v("Select Project")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.projects, function(project) {
+                return [
+                  _c("option", { domProps: { value: project.id } }, [
+                    _vm._v(_vm._s(project.name))
+                  ])
+                ]
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
           _c(
             "b-form-group",
             {

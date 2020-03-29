@@ -49,15 +49,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Register',
   data: function data() {
@@ -65,36 +56,26 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         email: '',
         name: '',
-        password: '',
-        password_confirmation: ''
-      },
-      show: true
+        password: ''
+      }
     };
   },
   methods: {
-    onSubmit: function onSubmit(evt) {
+    onSubmit: function onSubmit() {
       var _this = this;
 
-      evt.preventDefault();
-      this.$axios.post('api/register', this.form).then(function (res) {
-        if (res.status >= 200 && res.status < 300) _this.$router.push({
-          name: 'home'
-        });
+      this.$axios.post('/sign_up', this.form).then(function (res) {
+        if (res.data.data === 'Success') {
+          _this.$router.push({
+            name: 'home'
+          });
+        }
       });
     },
-    onReset: function onReset(evt) {
-      var _this2 = this;
-
-      evt.preventDefault();
+    onReset: function onReset() {
       this.form.email = '';
       this.form.name = '';
       this.form.password = '';
-      this.form.password_confirmation = ''; // Trick to reset/clear native browser form validation state
-
-      this.show = false;
-      this.$nextTick(function () {
-        _this2.show = true;
-      });
     }
   }
 });
@@ -119,137 +100,113 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.show
-        ? _c(
-            "b-form",
-            { on: { submit: _vm.onSubmit, reset: _vm.onReset } },
+      _c(
+        "b-form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.onSubmit($event)
+            },
+            reset: _vm.onReset
+          }
+        },
+        [
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-2",
+                label: "Your Name:",
+                "label-for": "input-2"
+              }
+            },
             [
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-1",
-                    label: "Email address:",
-                    "label-for": "input-1"
-                  }
+              _c("b-form-input", {
+                attrs: {
+                  id: "input-2",
+                  required: "",
+                  placeholder: "Enter name"
                 },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-1",
-                      type: "email",
-                      required: "",
-                      placeholder: "Enter email"
-                    },
-                    model: {
-                      value: _vm.form.email,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "email", $$v)
-                      },
-                      expression: "form.email"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-2",
-                    label: "Your Name:",
-                    "label-for": "input-2"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-2",
-                      required: "",
-                      placeholder: "Enter name"
-                    },
-                    model: {
-                      value: _vm.form.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "name", $$v)
-                      },
-                      expression: "form.name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-3",
-                    label: "Password:",
-                    "label-for": "input-3"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-3",
-                      required: "",
-                      placeholder: "Enter password"
-                    },
-                    model: {
-                      value: _vm.form.password,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "password", $$v)
-                      },
-                      expression: "form.password"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-4",
-                    label: "Password confirmation:",
-                    "label-for": "input-4"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-4",
-                      required: "",
-                      placeholder: "Enter password confirmation"
-                    },
-                    model: {
-                      value: _vm.form.password_confirmation,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "password_confirmation", $$v)
-                      },
-                      expression: "form.password_confirmation"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                { attrs: { type: "submit", variant: "primary" } },
-                [_vm._v("Submit")]
-              ),
-              _vm._v(" "),
-              _c("b-button", { attrs: { type: "reset", variant: "danger" } }, [
-                _vm._v("Reset")
-              ])
+                model: {
+                  value: _vm.form.name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "name", $$v)
+                  },
+                  expression: "form.name"
+                }
+              })
             ],
             1
-          )
-        : _vm._e()
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-1",
+                label: "Email address:",
+                "label-for": "input-1"
+              }
+            },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  id: "input-1",
+                  type: "email",
+                  required: "",
+                  placeholder: "Enter email"
+                },
+                model: {
+                  value: _vm.form.email,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "email", $$v)
+                  },
+                  expression: "form.email"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-3",
+                label: "Password:",
+                "label-for": "input-3"
+              }
+            },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  id: "input-3",
+                  required: "",
+                  placeholder: "Enter password"
+                },
+                model: {
+                  value: _vm.form.password,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "password", $$v)
+                  },
+                  expression: "form.password"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
+            _vm._v("Submit")
+          ]),
+          _vm._v(" "),
+          _c("b-button", { attrs: { type: "reset", variant: "danger" } }, [
+            _vm._v("Reset")
+          ])
+        ],
+        1
+      )
     ],
     1
   )

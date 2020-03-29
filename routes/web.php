@@ -13,5 +13,7 @@ Route::middleware('auth')->group(function () {
     Route::get('accept/{token}', 'InviteController@accept')->name('accept');
 });
 
+Route::post('/sign_up', 'UserController@signUp');
+
 
 Route::get('/{vue}', 'AppController@index')->where('vue', '.*')->name('home');

@@ -12,3 +12,4 @@ Route::middleware('auth:sanctum')->prefix('v1')->namespace('Api\V1')->group(func
     Route::get('/projects', 'ProjectController@index');
     Route::get('/project/{id}', 'ProjectController@show');
 });
+

@@ -11,14 +11,13 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::where('user_id', Auth::id())->get();
+        $projects = Project::with('users')->where('id', Auth::id())->get();
         return response()->json(['data' => $projects], 200);
     }
 
     public function show($id)
     {
-        error_log(json_encode(Project::with('users')));
-        $project = Project::findOrFail($id)->where('id', Auth::id());
+        $project = Project::findOrFail($id);
         return response()->json(['data' => $project], 200);
 
     }

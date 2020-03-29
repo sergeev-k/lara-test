@@ -9,6 +9,6 @@ class Invite extends Model
     protected $table = 'invites';
 
     protected $fillable = [
-        'email', 'token',
+        'email', 'token', 'project_id'
     ];
 }
