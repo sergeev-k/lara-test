@@ -120,7 +120,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 _context2.next = 5;
-                return _this2.$axios.get('api/v1/projects');
+                return _this2.$axios.get('/api/v1/projects');
 
               case 5:
                 projects = _context2.sent;
@@ -143,7 +143,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     errorMessage: function errorMessage(message) {
-      // Todo: временно
       console.log(message);
     }
   }

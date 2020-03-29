@@ -46839,22 +46839,22 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 var map = {
 	"./home": [
 		"./resources/js/pages/home.vue",
-		6,
+		0,
 		1
 	],
 	"./home.vue": [
 		"./resources/js/pages/home.vue",
-		6,
+		0,
 		1
 	],
 	"./invite": [
 		"./resources/js/pages/invite.vue",
-		6,
+		0,
 		2
 	],
 	"./invite.vue": [
 		"./resources/js/pages/invite.vue",
-		6,
+		0,
 		2
 	],
 	"./login": [
@@ -46875,21 +46875,21 @@ var map = {
 	],
 	"./projectShow": [
 		"./resources/js/pages/projectShow.vue",
-		6,
-		7
+		0,
+		5
 	],
 	"./projectShow.vue": [
 		"./resources/js/pages/projectShow.vue",
-		6,
-		7
+		0,
+		5
 	],
 	"./register": [
 		"./resources/js/pages/register.vue",
-		5
+		6
 	],
 	"./register.vue": [
 		"./resources/js/pages/register.vue",
-		5
+		6
 	]
 };
 function webpackAsyncContext(req) {

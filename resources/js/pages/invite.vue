@@ -59,14 +59,13 @@
             async getProjects() {
                 try {
                     await this.$axios.get('/sanctum/csrf-cookie');
-                    const projects = await this.$axios.get('api/v1/projects');
+                    const projects = await this.$axios.get('/api/v1/projects');
                     this.projects = projects.data.data;
                 } catch (e) {
                     this.errorMessage(e);
                 }
             },
             errorMessage(message) {
-                // Todo: временно
                 console.log(message)
             }
 
